@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Bar Inventory Forecasting</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">INVENTORY INTELLIGENCE</p>
+                <h1>Hotel Bar Inventory Forecasting</h1>
+                <p class="subtitle">Forecast demand, calculate par levels, and simulate inventory risk.</p>
+            </div>
+            <div class="actions">
+                <button id="demoBtn" class="btn primary">Run Demo Dataset</button>
+                <label class="btn secondary file-btn">
+                    Upload CSV
+                    <input id="csvInput" type="file" accept=".csv">
+                </label>
+            </div>
+        </header>
+
+        <main>
+            <section id="status" class="status hidden"></section>
+
+            <section class="cards">
+                <article class="card"><span>Rows Loaded</span><strong id="rows">—</strong></article>
+                <article class="card"><span>Total Consumed</span><strong id="totalConsumed">—</strong></article>
+                <article class="card"><span>Average Daily Demand</span><strong id="avgDaily">—</strong></article>
+                <article class="card"><span>Historical Stockouts</span><strong id="stockouts">—</strong></article>
+                <article class="card"><span>Bar / Brand Items</span><strong id="items">—</strong></article>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading">
+                    <div><p class="eyebrow">DEMAND OVERVIEW</p><h2>Total Daily Consumption</h2></div>
+                    <select id="trendFilter"><option value="all">All bars & brands</option></select>
+                </div>
+                <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+            </section>
+
+            <section class="grid-2">
+                <article class="panel">
+                    <div class="section-heading"><div><p class="eyebrow">PATTERN</p><h2>Weekday Consumption</h2></div></div>
+                    <div class="chart-wrap small"><canvas id="weekdayChart"></canvas></div>
+                </article>
+                <article class="panel">
+                    <div class="section-heading"><div><p class="eyebrow">ABC ANALYSIS</p><h2>Consumption Classification</h2></div></div>
+                    <div id="abcList" class="abc-list"></div>
+                </article>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading"><div><p class="eyebrow">FORECASTING</p><h2>Model Comparison</h2></div></div>
+                <div class="table-scroll"><table><thead><tr><th>Bar</th><th>Brand</th><th>Model</th><th>MAE</th><th>RMSE</th><th>WAPE</th></tr></thead><tbody id="modelTable"></tbody></table></div>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading"><div><p class="eyebrow">REPLENISHMENT</p><h2>Dynamic Par Level Recommendations</h2></div></div>
+                <div class="table-scroll"><table><thead><tr><th>Bar</th><th>Brand</th><th>ABC</th><th>Forecast/day</th><th>Safety stock</th><th>Par level</th><th>Stockout days</th><th>Turnover</th></tr></thead><tbody id="recommendationTable"></tbody></table></div>
+            </section>
+
+            <section class="panel explanation">
+                <p class="eyebrow">HOW IT WORKS</p>
+                <h2>End-to-end pipeline</h2>
+                <div class="pipeline">
+                    <span>Raw CSV</span><b>→</b><span>Validate</span><b>→</b><span>Daily Demand</span><b>→</b><span>ABC</span><b>→</b><span>Forecast</span><b>→</b><span>Safety Stock</span><b>→</b><span>Par Level</span><b>→</b><span>Simulation</span>
+                </div>
+                <p class="muted">The dashboard uses the same methodology as the reference notebook: chronological forecasting validation, Holt-Winters operational forecasting, demand variability for safety stock, and historical inventory backtesting.</p>
+            </section>
+        </main>
+
+        <footer>Hotel Bar Inventory Forecasting & Par Level Recommendation System</footer>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

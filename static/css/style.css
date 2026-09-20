@@ -1,0 +1,67 @@
+:root {
+    --bg: #0b1020;
+    --panel: #121a2e;
+    --panel-2: #18223b;
+    --text: #eef3ff;
+    --muted: #9ca8c7;
+    --line: #293655;
+    --accent: #6ea8fe;
+    --accent-2: #7cf0c6;
+    --danger: #ff7f96;
+    --shadow: 0 18px 45px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top right, #172344 0, var(--bg) 45%);
+    color: var(--text);
+}
+button, input, select { font: inherit; }
+.app-shell { width: min(1440px, 94%); margin: 0 auto; }
+.topbar { display:flex; justify-content:space-between; gap:24px; align-items:center; padding:38px 0 26px; }
+.eyebrow { margin:0 0 7px; color:var(--accent-2); font-size:11px; font-weight:800; letter-spacing:1.8px; }
+h1,h2,p { margin-top:0; }
+h1 { margin-bottom:8px; font-size:clamp(28px,4vw,46px); letter-spacing:-1.4px; }
+h2 { margin-bottom:0; font-size:22px; }
+.subtitle,.muted { color:var(--muted); }
+.actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+.btn { border:1px solid var(--line); border-radius:12px; padding:11px 16px; cursor:pointer; font-weight:700; color:var(--text); background:var(--panel); }
+.btn.primary { background:var(--accent); color:#07101f; border-color:var(--accent); }
+.btn.secondary:hover,.btn.primary:hover { transform:translateY(-1px); }
+.file-btn { position:relative; overflow:hidden; }
+.file-btn input { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.status { padding:13px 16px; border:1px solid var(--line); border-radius:12px; margin-bottom:18px; background:var(--panel); }
+.status.error { border-color:var(--danger); color:#ffd5dd; }
+.status.success { border-color:var(--accent-2); color:#d5fff0; }
+.hidden { display:none; }
+.cards { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:18px; }
+.card,.panel { background:linear-gradient(145deg, rgba(24,34,59,.96), rgba(14,21,39,.96)); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:18px; }
+.card { padding:20px; }
+.card span { color:var(--muted); font-size:13px; }
+.card strong { display:block; margin-top:8px; font-size:27px; }
+.panel { padding:22px; margin-bottom:18px; }
+.section-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+select { background:var(--panel-2); color:var(--text); border:1px solid var(--line); padding:9px 12px; border-radius:10px; }
+.chart-wrap { height:360px; position:relative; }
+.chart-wrap.small { height:290px; }
+.grid-2 { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; }
+.abc-list { display:grid; gap:12px; }
+.abc-row { display:grid; grid-template-columns:1fr auto; gap:12px; padding:12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); }
+.abc-meta { color:var(--muted); font-size:12px; margin-top:3px; }
+.badge { padding:5px 9px; border-radius:999px; font-size:12px; font-weight:800; }
+.badge.a { background:rgba(124,240,198,.15); color:var(--accent-2); }
+.badge.b { background:rgba(110,168,254,.15); color:var(--accent); }
+.badge.c { background:rgba(255,127,150,.15); color:var(--danger); }
+.table-scroll { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.6px; }
+td { font-size:13px; }
+.pipeline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; margin:18px 0; }
+.pipeline span { padding:9px 12px; border:1px solid var(--line); border-radius:999px; background:var(--panel-2); font-size:13px; }
+.pipeline b { color:var(--accent-2); }
+footer { color:var(--muted); text-align:center; padding:16px 0 34px; font-size:12px; }
+@media (max-width: 1000px) { .cards { grid-template-columns:repeat(2,1fr); } .grid-2 { grid-template-columns:1fr; } .topbar { align-items:flex-start; flex-direction:column; } .actions { justify-content:flex-start; } }
+@media (max-width: 560px) { .cards { grid-template-columns:1fr; } .app-shell { width:92%; } .panel { padding:16px; } }
